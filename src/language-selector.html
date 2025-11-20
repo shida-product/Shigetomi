@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>言語選択 | Language Selection</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    @keyframes fadeInUp {
+      from {
+        opacity: 0;
+        transform: translateY(20px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+    
+    .animate-fade-in-up {
+      animation: fadeInUp 0.5s ease-out forwards;
+      opacity: 0;
+    }
+
+    /* アイコンのSVG - ここを画像URLに差し替え可能 */
+    .custom-icon {
+      width: 32px;
+      height: 32px;
+    }
+  </style>
+</head>
+<body>
+  <div class="min-h-screen bg-gradient-to-b from-slate-50 via-amber-50/30 to-slate-50 relative overflow-hidden">
+    <!-- Traditional Japanese Pattern Overlay -->
+    <div class="absolute inset-0 opacity-[0.03]" style="background-image: url(&quot;data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23000000' fill-opacity='1'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E&quot;);"></div>
+
+    <!-- Decorative Top Border -->
+    <div class="h-1 bg-gradient-to-r from-transparent via-red-800 to-transparent"></div>
+
+    <div class="relative min-h-screen flex items-center justify-center px-4 py-6">
+      <div class="w-full max-w-md">
+        <!-- Header -->
+        <div class="text-center mb-8">
+          <div class="inline-block mb-4 relative">
+            <div class="w-16 h-16 bg-gradient-to-br from-red-800 to-red-900 rounded-full flex items-center justify-center shadow-xl border-3 border-white">
+              <!-- ★ アイコン差し替えポイント: 下のSVGを <img src="your-icon.png" class="custom-icon"> に変更可能 -->
+              <svg class="custom-icon text-amber-50" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="m5 8 6 6"></path>
+                <path d="m4 14 6-6 2-3"></path>
+                <path d="M2 5h12"></path>
+                <path d="M7 2h1"></path>
+                <path d="m22 22-5-10-5 10"></path>
+                <path d="M14 18h6"></path>
+              </svg>
+            </div>
+            <div class="absolute -bottom-1 -right-1 w-5 h-5 bg-amber-400 rounded-full border-3 border-white"></div>
+          </div>
+          
+          <div class="space-y-2">
+            <h1 class="text-3xl font-bold text-gray-900 tracking-wide">
+              ようこそ
+            </h1>
+            <div class="w-12 h-0.5 bg-red-800 mx-auto"></div>
+            <p class="text-base text-gray-700 px-4 leading-relaxed">
+              言語を選択してください
+            </p>
+            <p class="text-sm text-gray-500 px-4">
+              Select your language
+            </p>
+          </div>
+        </div>
+
+        <!-- Language Cards -->
+        <div class="space-y-3 mb-8" id="languageList">
+          <!-- 日本語 -->
+          <button onclick="selectLanguage('https://docs.google.com/forms/d/e/YOUR_JAPANESE_FORM_ID/viewform', 'ja')" 
+                  class="group relative bg-white rounded-xl shadow-md hover:shadow-xl active:shadow-lg transition-all duration-300 p-4 border border-gray-100 hover:border-red-800 active:scale-[0.98] w-full animate-fade-in-up"
+                  style="animation-delay: 0ms;">
+            <div class="absolute top-0 right-0 w-10 h-10 overflow-hidden">
+              <div class="absolute top-1 right-1 w-8 h-8 bg-gradient-to-br from-red-800/10 to-transparent rotate-45 transform origin-top-right"></div>
+            </div>
+            <div class="flex items-center justify-between">
+              <div class="flex items-center gap-3">
+                <div class="w-12 h-12 bg-gradient-to-br from-red-50 to-amber-50 rounded-full flex items-center justify-center border-2 border-red-800/10 group-hover:border-red-800/30 transition-colors flex-shrink-0">
+                  <span class="text-2xl">🇯🇵</span>
+                </div>
+                <div class="text-left">
+                  <div class="text-base font-medium text-gray-900">日本語</div>
+                  <div class="text-sm text-gray-500">Japanese</div>
+                </div>
+              </div>
+              <div class="text-red-800 group-hover:translate-x-1 transition-transform flex-shrink-0">
+                <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+                </svg>
+              </div>
+            </div>
+          </button>
+
+          <!-- English -->
+          <button onclick="selectLanguage('https://docs.google.com/forms/d/e/YOUR_ENGLISH_FORM_ID/viewform', 'en')" 
+                  class="group relative bg-white rounded-xl shadow-md hover:shadow-xl active:shadow-lg transition-all duration-300 p-4 border border-gray-100 hover:border-red-800 active:scale-[0.98] w-full animate-fade-in-up"
+                  style="animation-delay: 80ms;">
+            <div class="absolute top-0 right-0 w-10 h-10 overflow-hidden">
+              <div class="absolute top-1 right-1 w-8 h-8 bg-gradient-to-br from-red-800/10 to-transparent rotate-45 transform origin-top-right"></div>
+            </div>
+            <div class="flex items-center justify-between">
+              <div class="flex items-center gap-3">
+                <div class="w-12 h-12 bg-gradient-to-br from-red-50 to-amber-50 rounded-full flex items-center justify-center border-2 border-red-800/10 group-hover:border-red-800/30 transition-colors flex-shrink-0">
+                  <span class="text-2xl">🇬🇧</span>
+                </div>
+                <div class="text-left">
+                  <div class="text-base font-medium text-gray-900">English</div>
+                  <div class="text-sm text-gray-500">English</div>
+                </div>
+              </div>
+              <div class="text-red-800 group-hover:translate-x-1 transition-transform flex-shrink-0">
+                <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+                </svg>
+              </div>
+            </div>
+          </button>
+
+          <!-- Español -->
+          <button onclick="selectLanguage('https://docs.google.com/forms/d/e/YOUR_SPANISH_FORM_ID/viewform', 'es')" 
+                  class="group relative bg-white rounded-xl shadow-md hover:shadow-xl active:shadow-lg transition-all duration-300 p-4 border border-gray-100 hover:border-red-800 active:scale-[0.98] w-full animate-fade-in-up"
+                  style="animation-delay: 160ms;">
+            <div class="absolute top-0 right-0 w-10 h-10 overflow-hidden">
+              <div class="absolute top-1 right-1 w-8 h-8 bg-gradient-to-br from-red-800/10 to-transparent rotate-45 transform origin-top-right"></div>
+            </div>
+            <div class="flex items-center justify-between">
+              <div class="flex items-center gap-3">
+                <div class="w-12 h-12 bg-gradient-to-br from-red-50 to-amber-50 rounded-full flex items-center justify-center border-2 border-red-800/10 group-hover:border-red-800/30 transition-colors flex-shrink-0">
+                  <span class="text-2xl">🇪🇸</span>
+                </div>
+                <div class="text-left">
+                  <div class="text-base font-medium text-gray-900">Español</div>
+                  <div class="text-sm text-gray-500">Spanish</div>
+                </div>
+              </div>
+              <div class="text-red-800 group-hover:translate-x-1 transition-transform flex-shrink-0">
+                <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+                </svg>
+              </div>
+            </div>
+          </button>
+
+          <!-- 简体中文 -->
+          <button onclick="selectLanguage('https://docs.google.com/forms/d/e/YOUR_CHINESE_SIMPLIFIED_FORM_ID/viewform', 'zh-CN')" 
+                  class="group relative bg-white rounded-xl shadow-md hover:shadow-xl active:shadow-lg transition-all duration-300 p-4 border border-gray-100 hover:border-red-800 active:scale-[0.98] w-full animate-fade-in-up"
+                  style="animation-delay: 240ms;">
+            <div class="absolute top-0 right-0 w-10 h-10 overflow-hidden">
+              <div class="absolute top-1 right-1 w-8 h-8 bg-gradient-to-br from-red-800/10 to-transparent rotate-45 transform origin-top-right"></div>
+            </div>
+            <div class="flex items-center justify-between">
+              <div class="flex items-center gap-3">
+                <div class="w-12 h-12 bg-gradient-to-br from-red-50 to-amber-50 rounded-full flex items-center justify-center border-2 border-red-800/10 group-hover:border-red-800/30 transition-colors flex-shrink-0">
+                  <span class="text-2xl">🇨🇳</span>
+                </div>
+                <div class="text-left">
+                  <div class="text-base font-medium text-gray-900">简体中文</div>
+                  <div class="text-sm text-gray-500">Chinese (Simplified)</div>
+                </div>
+              </div>
+              <div class="text-red-800 group-hover:translate-x-1 transition-transform flex-shrink-0">
+                <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+                </svg>
+              </div>
+            </div>
+          </button>
+
+          <!-- 繁體中文 -->
+          <button onclick="selectLanguage('https://docs.google.com/forms/d/e/YOUR_CHINESE_TRADITIONAL_FORM_ID/viewform', 'zh-TW')" 
+                  class="group relative bg-white rounded-xl shadow-md hover:shadow-xl active:shadow-lg transition-all duration-300 p-4 border border-gray-100 hover:border-red-800 active:scale-[0.98] w-full animate-fade-in-up"
+                  style="animation-delay: 320ms;">
+            <div class="absolute top-0 right-0 w-10 h-10 overflow-hidden">
+              <div class="absolute top-1 right-1 w-8 h-8 bg-gradient-to-br from-red-800/10 to-transparent rotate-45 transform origin-top-right"></div>
+            </div>
+            <div class="flex items-center justify-between">
+              <div class="flex items-center gap-3">
+                <div class="w-12 h-12 bg-gradient-to-br from-red-50 to-amber-50 rounded-full flex items-center justify-center border-2 border-red-800/10 group-hover:border-red-800/30 transition-colors flex-shrink-0">
+                  <span class="text-2xl">🇹🇼</span>
+                </div>
+                <div class="text-left">
+                  <div class="text-base font-medium text-gray-900">繁體中文</div>
+                  <div class="text-sm text-gray-500">Chinese (Traditional)</div>
+                </div>
+              </div>
+              <div class="text-red-800 group-hover:translate-x-1 transition-transform flex-shrink-0">
+                <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+                </svg>
+              </div>
+            </div>
+          </button>
+
+          <!-- 한국어 -->
+          <button onclick="selectLanguage('https://docs.google.com/forms/d/e/YOUR_KOREAN_FORM_ID/viewform', 'ko')" 
+                  class="group relative bg-white rounded-xl shadow-md hover:shadow-xl active:shadow-lg transition-all duration-300 p-4 border border-gray-100 hover:border-red-800 active:scale-[0.98] w-full animate-fade-in-up"
+                  style="animation-delay: 400ms;">
+            <div class="absolute top-0 right-0 w-10 h-10 overflow-hidden">
+              <div class="absolute top-1 right-1 w-8 h-8 bg-gradient-to-br from-red-800/10 to-transparent rotate-45 transform origin-top-right"></div>
+            </div>
+            <div class="flex items-center justify-between">
+              <div class="flex items-center gap-3">
+                <div class="w-12 h-12 bg-gradient-to-br from-red-50 to-amber-50 rounded-full flex items-center justify-center border-2 border-red-800/10 group-hover:border-red-800/30 transition-colors flex-shrink-0">
+                  <span class="text-2xl">🇰🇷</span>
+                </div>
+                <div class="text-left">
+                  <div class="text-base font-medium text-gray-900">한국어</div>
+                  <div class="text-sm text-gray-500">Korean</div>
+                </div>
+              </div>
+              <div class="text-red-800 group-hover:translate-x-1 transition-transform flex-shrink-0">
+                <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+                </svg>
+              </div>
+            </div>
+          </button>
+        </div>
+
+        <!-- Footer -->
+        <div class="text-center">
+          <div class="bg-white/80 backdrop-blur-sm rounded-xl shadow-sm p-4 border border-gray-100">
+            <p class="text-sm text-gray-800 mb-2">
+              📱 ご来館いただきありがとうございます
+            </p>
+            <div class="w-8 h-0.5 bg-red-800 mx-auto mb-2"></div>
+            <p class="text-xs text-gray-600">
+              Thank you for choosing our<br>traditional Japanese house
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Decorative Bottom Border -->
+    <div class="h-1 bg-gradient-to-r from-transparent via-red-800 to-transparent"></div>
+  </div>
+
+  <script>
+    function selectLanguage(formUrl, language) {
+      const urlWithLanguage = formUrl + '?hl=' + language;
+      window.location.href = urlWithLanguage;
+    }
+  </script>
+</body>
+</html>
