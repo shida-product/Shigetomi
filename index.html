@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="ja">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=yes">
@@ -16,20 +17,29 @@
       -webkit-user-select: none;
       user-select: none;
     }
-    
+
     /* テキストは選択可能に */
-    p, div, span, h1, h2, h3, h4, h5, h6 {
+    p,
+    div,
+    span,
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6 {
       -webkit-user-select: text;
       user-select: text;
     }
-    
+
     /* 横スクロール防止 */
-    html, body {
+    html,
+    body {
       overflow-x: hidden;
       width: 100%;
       position: relative;
     }
-    
+
     /* 円形コンテナの中央揃えを強化 */
     .flag-container {
       display: flex;
@@ -39,7 +49,7 @@
       line-height: 0;
       overflow: hidden;
     }
-    
+
     /* 国旗の絵文字を完全に中央揃え */
     .flag-emoji {
       display: flex;
@@ -56,37 +66,42 @@
       transform: translate(1px, -3px);
       position: relative;
     }
-    
+
     /* ボタンのタッチ操作最適化 */
     button {
       touch-action: manipulation;
       -webkit-tap-highlight-color: rgba(0, 0, 0, 0.1);
       cursor: pointer;
-      min-height: 44px; /* iOS推奨タップ領域 */
+      min-height: 44px;
+      /* iOS推奨タップ領域 */
     }
-    
+
     /* モバイルでのフォントサイズ調整 */
     @media (max-width: 640px) {
       h1 {
-        font-size: 1.75rem; /* text-3xl → text-2xl相当 */
+        font-size: 1.75rem;
+        /* text-3xl → text-2xl相当 */
       }
-      
+
       .language-card {
-        padding: 1rem; /* p-4 → p-4 (維持) */
+        padding: 1rem;
+        /* p-4 → p-4 (維持) */
       }
     }
-    
+
     /* 非常に小さな画面対応 */
     @media (max-width: 375px) {
       h1 {
-        font-size: 1.5rem; /* text-2xl */
+        font-size: 1.5rem;
+        /* text-2xl */
       }
-      
+
       .language-card {
-        padding: 0.875rem; /* p-3.5 */
+        padding: 0.875rem;
+        /* p-3.5 */
       }
     }
-    
+
     /* タッチフィードバック */
     button:active {
       transform: scale(0.98);
@@ -94,10 +109,13 @@
     }
   </style>
 </head>
+
 <body>
   <div class="min-h-screen bg-gradient-to-b from-slate-50 via-amber-50/30 to-slate-50 relative overflow-hidden">
     <!-- Traditional Japanese Pattern Overlay -->
-    <div class="absolute inset-0 opacity-[0.03]" style="background-image: url(&quot;data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23000000' fill-opacity='1'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E&quot;);"></div>
+    <div class="absolute inset-0 opacity-[0.03]"
+      style="background-image: url(&quot;data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23000000' fill-opacity='1'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E&quot;);">
+    </div>
 
     <!-- Decorative Top Border -->
     <div class="h-1 bg-gradient-to-r from-transparent via-red-800 to-transparent"></div>
@@ -129,15 +147,19 @@
         <!-- Language Cards -->
         <div class="space-y-2.5 sm:space-y-3 mb-6 sm:mb-8" id="languageList">
           <!-- 日本語 -->
-          <button onclick="selectLanguage('https://docs.google.com/forms/d/e/1FAIpQLSfhZKo2QMGO2KcWBymsVCAORJFppqp3-hAYz94AacKJuMtIKA/viewform')" 
-                  class="group relative bg-white rounded-xl shadow-md p-3.5 sm:p-4 border border-gray-100 w-full language-card active:bg-gray-50 transition-colors">
+          <button
+            onclick="selectLanguage('https://docs.google.com/forms/d/e/1FAIpQLSfhZKo2QMGO2KcWBymsVCAORJFppqp3-hAYz94AacKJuMtIKA/viewform')"
+            class="group relative bg-white rounded-xl shadow-md p-3.5 sm:p-4 border border-gray-100 w-full language-card active:bg-gray-50 transition-colors">
             <div class="absolute top-0 right-0 w-10 h-10 overflow-hidden">
-              <div class="absolute top-1 right-1 w-8 h-8 bg-gradient-to-br from-red-800/10 to-transparent rotate-45 transform origin-top-right"></div>
+              <div
+                class="absolute top-1 right-1 w-8 h-8 bg-gradient-to-br from-red-800/10 to-transparent rotate-45 transform origin-top-right">
+              </div>
             </div>
             <div class="flex items-center justify-between">
               <div class="flex items-center gap-2.5 sm:gap-3">
-                <div class="w-11 h-11 sm:w-12 sm:h-12 bg-gradient-to-br from-red-50 to-amber-50 rounded-full border-2 border-red-800/10 flex-shrink-0 flag-container">
-                  <span class="text-xl sm:text-2xl flag-emoji">🇯🇵</span>
+                <div
+                  class="w-11 h-11 sm:w-12 sm:h-12 bg-gradient-to-br from-red-50 to-amber-50 rounded-full border-2 border-red-800/10 flex-shrink-0 flex items-center justify-center">
+                  <span class="text-sm sm:text-base font-bold text-red-800">JP</span>
                 </div>
                 <div class="text-left">
                   <div class="text-sm sm:text-base font-medium text-gray-900">日本語</div>
@@ -152,16 +174,48 @@
             </div>
           </button>
 
-          <!-- English -->
-          <button onclick="selectLanguage('https://docs.google.com/forms/d/e/1FAIpQLSe32C-acLpwtX9CDzIQGdf9VoPYgt1jji02XuLyOOkl9sQnEQ/viewform')" 
-                  class="group relative bg-white rounded-xl shadow-md p-3.5 sm:p-4 border border-gray-100 w-full language-card active:bg-gray-50 transition-colors">
+          <!-- 한국어 -->
+          <button
+            onclick="selectLanguage('https://docs.google.com/forms/d/e/1FAIpQLSdXQWcGzUOXaEeQfj7NPWjIPmvuiwRYvYhURv1qbnElPYJBKA/viewform')"
+            class="group relative bg-white rounded-xl shadow-md p-3.5 sm:p-4 border border-gray-100 w-full language-card active:bg-gray-50 transition-colors">
             <div class="absolute top-0 right-0 w-10 h-10 overflow-hidden">
-              <div class="absolute top-1 right-1 w-8 h-8 bg-gradient-to-br from-red-800/10 to-transparent rotate-45 transform origin-top-right"></div>
+              <div
+                class="absolute top-1 right-1 w-8 h-8 bg-gradient-to-br from-red-800/10 to-transparent rotate-45 transform origin-top-right">
+              </div>
             </div>
             <div class="flex items-center justify-between">
               <div class="flex items-center gap-2.5 sm:gap-3">
-                <div class="w-11 h-11 sm:w-12 sm:h-12 bg-gradient-to-br from-red-50 to-amber-50 rounded-full border-2 border-red-800/10 flex-shrink-0 flag-container">
-                  <span class="text-xl sm:text-2xl flag-emoji">🇺🇸</span>
+                <div
+                  class="w-11 h-11 sm:w-12 sm:h-12 bg-gradient-to-br from-red-50 to-amber-50 rounded-full border-2 border-red-800/10 flex-shrink-0 flex items-center justify-center">
+                  <span class="text-sm sm:text-base font-bold text-red-800">KR</span>
+                </div>
+                <div class="text-left">
+                  <div class="text-sm sm:text-base font-medium text-gray-900">한국어</div>
+                  <div class="text-xs sm:text-sm text-gray-500">Korean</div>
+                </div>
+              </div>
+              <div class="text-red-800 flex-shrink-0">
+                <svg class="w-4 h-4 sm:w-5 sm:h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+                </svg>
+              </div>
+            </div>
+          </button>
+
+          <!-- English -->
+          <button
+            onclick="selectLanguage('https://docs.google.com/forms/d/e/1FAIpQLSe32C-acLpwtX9CDzIQGdf9VoPYgt1jji02XuLyOOkl9sQnEQ/viewform')"
+            class="group relative bg-white rounded-xl shadow-md p-3.5 sm:p-4 border border-gray-100 w-full language-card active:bg-gray-50 transition-colors">
+            <div class="absolute top-0 right-0 w-10 h-10 overflow-hidden">
+              <div
+                class="absolute top-1 right-1 w-8 h-8 bg-gradient-to-br from-red-800/10 to-transparent rotate-45 transform origin-top-right">
+              </div>
+            </div>
+            <div class="flex items-center justify-between">
+              <div class="flex items-center gap-2.5 sm:gap-3">
+                <div
+                  class="w-11 h-11 sm:w-12 sm:h-12 bg-gradient-to-br from-red-50 to-amber-50 rounded-full border-2 border-red-800/10 flex-shrink-0 flex items-center justify-center">
+                  <span class="text-sm sm:text-base font-bold text-red-800">US</span>
                 </div>
                 <div class="text-left">
                   <div class="text-sm sm:text-base font-medium text-gray-900">English</div>
@@ -176,64 +230,20 @@
             </div>
           </button>
 
-          <!-- Español -->
-          <button onclick="selectLanguage('https://docs.google.com/forms/d/e/1FAIpQLSfu0w9q_Yf3OZkT54Awkh3V0KMlJsYDwJ2wHZolbvOGWhiOLw/viewform')" 
-                  class="group relative bg-white rounded-xl shadow-md p-3.5 sm:p-4 border border-gray-100 w-full language-card active:bg-gray-50 transition-colors">
+          <!-- 繁體中文 (台湾) -->
+          <button
+            onclick="selectLanguage('https://docs.google.com/forms/d/e/1FAIpQLSfa-AVPxow5Md6qaloEjeUdsMfp7G5wlo7DeVdTBcwxntjb-w/viewform')"
+            class="group relative bg-white rounded-xl shadow-md p-3.5 sm:p-4 border border-gray-100 w-full language-card active:bg-gray-50 transition-colors">
             <div class="absolute top-0 right-0 w-10 h-10 overflow-hidden">
-              <div class="absolute top-1 right-1 w-8 h-8 bg-gradient-to-br from-red-800/10 to-transparent rotate-45 transform origin-top-right"></div>
+              <div
+                class="absolute top-1 right-1 w-8 h-8 bg-gradient-to-br from-red-800/10 to-transparent rotate-45 transform origin-top-right">
+              </div>
             </div>
             <div class="flex items-center justify-between">
               <div class="flex items-center gap-2.5 sm:gap-3">
-                <div class="w-11 h-11 sm:w-12 sm:h-12 bg-gradient-to-br from-red-50 to-amber-50 rounded-full border-2 border-red-800/10 flex-shrink-0 flag-container">
-                  <span class="text-xl sm:text-2xl flag-emoji">🇪🇸</span>
-                </div>
-                <div class="text-left">
-                  <div class="text-sm sm:text-base font-medium text-gray-900">Español</div>
-                  <div class="text-xs sm:text-sm text-gray-500">Spanish</div>
-                </div>
-              </div>
-              <div class="text-red-800 flex-shrink-0">
-                <svg class="w-4 h-4 sm:w-5 sm:h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
-                </svg>
-              </div>
-            </div>
-          </button>
-
-          <!-- 簡体中文 -->
-          <button onclick="selectLanguage('https://docs.google.com/forms/d/e/1FAIpQLScDi2GML1NgNbCz5sE7c-gnzkzX-G_WGKnNw8j_m2EJBnbkYg/viewform')" 
-                  class="group relative bg-white rounded-xl shadow-md p-3.5 sm:p-4 border border-gray-100 w-full language-card active:bg-gray-50 transition-colors">
-            <div class="absolute top-0 right-0 w-10 h-10 overflow-hidden">
-              <div class="absolute top-1 right-1 w-8 h-8 bg-gradient-to-br from-red-800/10 to-transparent rotate-45 transform origin-top-right"></div>
-            </div>
-            <div class="flex items-center justify-between">
-              <div class="flex items-center gap-2.5 sm:gap-3">
-                <div class="w-11 h-11 sm:w-12 sm:h-12 bg-gradient-to-br from-red-50 to-amber-50 rounded-full border-2 border-red-800/10 flex-shrink-0 flag-container">
-                  <span class="text-xl sm:text-2xl flag-emoji">🇨🇳</span>
-                </div>
-                <div class="text-left">
-                  <div class="text-sm sm:text-base font-medium text-gray-900">简体中文</div>
-                  <div class="text-xs sm:text-sm text-gray-500">Chinese (Simplified)</div>
-                </div>
-              </div>
-              <div class="text-red-800 flex-shrink-0">
-                <svg class="w-4 h-4 sm:w-5 sm:h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
-                </svg>
-              </div>
-            </div>
-          </button>
-
-          <!-- 繁體中文 -->
-          <button onclick="selectLanguage('https://docs.google.com/forms/d/e/1FAIpQLSfa-AVPxow5Md6qaloEjeUdsMfp7G5wlo7DeVdTBcwxntjb-w/viewform')" 
-                  class="group relative bg-white rounded-xl shadow-md p-3.5 sm:p-4 border border-gray-100 w-full language-card active:bg-gray-50 transition-colors">
-            <div class="absolute top-0 right-0 w-10 h-10 overflow-hidden">
-              <div class="absolute top-1 right-1 w-8 h-8 bg-gradient-to-br from-red-800/10 to-transparent rotate-45 transform origin-top-right"></div>
-            </div>
-            <div class="flex items-center justify-between">
-              <div class="flex items-center gap-2.5 sm:gap-3">
-                <div class="w-11 h-11 sm:w-12 sm:h-12 bg-gradient-to-br from-red-50 to-amber-50 rounded-full border-2 border-red-800/10 flex-shrink-0 flag-container">
-                  <span class="text-xl sm:text-2xl flag-emoji">🇹🇼</span>
+                <div
+                  class="w-11 h-11 sm:w-12 sm:h-12 bg-gradient-to-br from-red-50 to-amber-50 rounded-full border-2 border-red-800/10 flex-shrink-0 flex items-center justify-center">
+                  <span class="text-sm sm:text-base font-bold text-red-800">TW</span>
                 </div>
                 <div class="text-left">
                   <div class="text-sm sm:text-base font-medium text-gray-900">繁體中文</div>
@@ -248,20 +258,52 @@
             </div>
           </button>
 
-          <!-- 한국어 -->
-          <button onclick="selectLanguage('https://docs.google.com/forms/d/e/1FAIpQLSdXQWcGzUOXaEeQfj7NPWjIPmvuiwRYvYhURv1qbnElPYJBKA/viewform')" 
-                  class="group relative bg-white rounded-xl shadow-md p-3.5 sm:p-4 border border-gray-100 w-full language-card active:bg-gray-50 transition-colors">
+          <!-- 簡体中文 (中国) -->
+          <button
+            onclick="selectLanguage('https://docs.google.com/forms/d/e/1FAIpQLScDi2GML1NgNbCz5sE7c-gnzkzX-G_WGKnNw8j_m2EJBnbkYg/viewform')"
+            class="group relative bg-white rounded-xl shadow-md p-3.5 sm:p-4 border border-gray-100 w-full language-card active:bg-gray-50 transition-colors">
             <div class="absolute top-0 right-0 w-10 h-10 overflow-hidden">
-              <div class="absolute top-1 right-1 w-8 h-8 bg-gradient-to-br from-red-800/10 to-transparent rotate-45 transform origin-top-right"></div>
+              <div
+                class="absolute top-1 right-1 w-8 h-8 bg-gradient-to-br from-red-800/10 to-transparent rotate-45 transform origin-top-right">
+              </div>
             </div>
             <div class="flex items-center justify-between">
               <div class="flex items-center gap-2.5 sm:gap-3">
-                <div class="w-11 h-11 sm:w-12 sm:h-12 bg-gradient-to-br from-red-50 to-amber-50 rounded-full border-2 border-red-800/10 flex-shrink-0 flag-container">
-                  <span class="text-xl sm:text-2xl flag-emoji">🇰🇷</span>
+                <div
+                  class="w-11 h-11 sm:w-12 sm:h-12 bg-gradient-to-br from-red-50 to-amber-50 rounded-full border-2 border-red-800/10 flex-shrink-0 flex items-center justify-center">
+                  <span class="text-sm sm:text-base font-bold text-red-800">CN</span>
                 </div>
                 <div class="text-left">
-                  <div class="text-sm sm:text-base font-medium text-gray-900">한국어</div>
-                  <div class="text-xs sm:text-sm text-gray-500">Korean</div>
+                  <div class="text-sm sm:text-base font-medium text-gray-900">简体中文</div>
+                  <div class="text-xs sm:text-sm text-gray-500">Chinese (Simplified)</div>
+                </div>
+              </div>
+              <div class="text-red-800 flex-shrink-0">
+                <svg class="w-4 h-4 sm:w-5 sm:h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+                </svg>
+              </div>
+            </div>
+          </button>
+
+          <!-- Español -->
+          <button
+            onclick="selectLanguage('https://docs.google.com/forms/d/e/1FAIpQLSfu0w9q_Yf3OZkT54Awkh3V0KMlJsYDwJ2wHZolbvOGWhiOLw/viewform')"
+            class="group relative bg-white rounded-xl shadow-md p-3.5 sm:p-4 border border-gray-100 w-full language-card active:bg-gray-50 transition-colors">
+            <div class="absolute top-0 right-0 w-10 h-10 overflow-hidden">
+              <div
+                class="absolute top-1 right-1 w-8 h-8 bg-gradient-to-br from-red-800/10 to-transparent rotate-45 transform origin-top-right">
+              </div>
+            </div>
+            <div class="flex items-center justify-between">
+              <div class="flex items-center gap-2.5 sm:gap-3">
+                <div
+                  class="w-11 h-11 sm:w-12 sm:h-12 bg-gradient-to-br from-red-50 to-amber-50 rounded-full border-2 border-red-800/10 flex-shrink-0 flex items-center justify-center">
+                  <span class="text-sm sm:text-base font-bold text-red-800">ES</span>
+                </div>
+                <div class="text-left">
+                  <div class="text-sm sm:text-base font-medium text-gray-900">Español</div>
+                  <div class="text-xs sm:text-sm text-gray-500">Spanish</div>
                 </div>
               </div>
               <div class="text-red-800 flex-shrink-0">
@@ -300,23 +342,24 @@
         window.location.href = formUrl;
       }
     }
-    
+
     // iOS Safariでの100vh問題を解決
     function setViewportHeight() {
       const vh = window.innerHeight * 0.01;
       document.documentElement.style.setProperty('--vh', `${vh}px`);
     }
-    
+
     setViewportHeight();
     window.addEventListener('resize', setViewportHeight);
-    window.addEventListener('orientationchange', function() {
+    window.addEventListener('orientationchange', function () {
       setTimeout(setViewportHeight, 100);
     });
-    
+
     // モバイルでのパフォーマンス最適化
     if ('ontouchstart' in window) {
       document.body.classList.add('touch-device');
     }
   </script>
 </body>
+
 </html>
