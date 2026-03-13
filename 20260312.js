@@ -20,7 +20,8 @@ const MASTER_SETTINGS = {
     '到着日時',                       //14
     '出発日時',                       //15
     '宿泊約款・利用規約 同意',       //16
-    '元シート名'                      //17
+    '元シート名',                     //17
+    '宿泊目的（複数選択）'               //18
   ]
 };
 
@@ -71,7 +72,8 @@ const FORM_MAPPERS = {
       row[12],         // 到着日時
       row[13],         // 出発日時
       row[14],         // 同意
-      sheetName        // 元シート名
+      sheetName,       // 元シート名
+      row[15] || ''    // 宿泊目的（複数選択）
     ];
   },
 
@@ -112,7 +114,8 @@ const FORM_MAPPERS = {
       row[11],         // 到着日時
       row[12],         // 出発日時
       row[13],         // 同意
-      sheetName        // 元シート名
+      sheetName,       // 元シート名
+      row[14] || ''    // 宿泊目的（複数選択）
     ];
   },
 
@@ -139,7 +142,8 @@ const FORM_MAPPERS = {
       row[11],
       row[12],
       row[13],
-      sheetName
+      sheetName,       // 元シート名
+      row[14] || ''    // 宿泊目的（複数選択）
     ];
   },
 
@@ -165,7 +169,8 @@ const FORM_MAPPERS = {
       row[11],
       row[12],
       row[13],
-      sheetName
+      sheetName,       // 元シート名
+      row[14] || ''    // 宿泊目的（複数選択）
     ];
   },
 
@@ -191,7 +196,8 @@ const FORM_MAPPERS = {
       row[11],
       row[12],
       row[13],
-      sheetName
+      sheetName,       // 元シート名
+      row[14] || ''    // 宿泊目的（複数選択）
     ];
   },
 
@@ -217,7 +223,8 @@ const FORM_MAPPERS = {
       row[11],
       row[12],
       row[13],
-      sheetName
+      sheetName,       // 元シート名
+      row[14] || ''    // 宿泊目的（複数選択）
     ];
   }
 
@@ -304,7 +311,8 @@ function postCheckinToSlack(masterRow) {
     arrival,        //14. 到着日時
     departure,      //15. 出発日時
     agreement,      //16. 宿泊約款・利用規約 同意
-    sourceSheet     //17. 元シート名
+    sourceSheet,    //17. 元シート名
+    stayPurpose     //18. 宿泊目的（複数選択）
   ] = masterRow;
 
   const dob =
@@ -407,6 +415,10 @@ function postCheckinToSlack(masterRow) {
         {
           type: 'mrkdwn',
           text: `*約款・規約への同意*\n${agreement || '-'}`
+        },
+        {
+          type: 'mrkdwn',
+          text: `*宿泊目的*\n${stayPurpose || '-'}`
         }
       ]
     },
