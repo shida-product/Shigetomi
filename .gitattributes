@@ -1,0 +1,2 @@
+# シェルの hook は LF 固定（CRLF だと #!/bin/sh が壊れる）
+.githooks/pre-commit text eol=lf
